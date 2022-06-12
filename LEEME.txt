@@ -1,0 +1,3 @@
+12/06/22:
+	-hay que generalizar la lut "logx" para cualquier tamaño, no el ajierro 340, que viene de w/scale donde w = 3400 y scale = 10. 
+	esa lut se deberia generar en el propio codigo

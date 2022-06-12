@@ -4,10 +4,11 @@ SoundFile file;
 AudioIn in;
 FFT fft;
 int cols, rows;
+int bands = 128;
 int scl = 10;
 int w = 3400;
 int h = 3000;
-int bands = 128;
+
 int stretch = 2;
 float flying = 0;
 float hscale=0.0;
@@ -63,7 +64,7 @@ void setup() {
   
   in= new AudioIn(this, 0);
   fft= new FFT(this, bands);
-  fft.input(in);
+  fft.input(file);
   time = millis();
   frameRate(30);
 }
@@ -78,7 +79,7 @@ void draw() {
     xoff = 0;
     float yscale = (1/(0.001*y+1));
     for (int x = 0; x < bands; x++) {
-      float alt =yscale*map(50*fft.spectrum[x], 0, 1, 300, 494);
+      float alt =yscale*map(5*fft.spectrum[x], 0, 1, 20, 987);
       for (int w=0; w<stretch; w++) {
         terrain[stretch*x+w][y]=alt*noise(xoff, yoff);
         xoff += 0.1;
